@@ -128,10 +128,12 @@ But that's quite a bit of thought, and we may have some other control
 characters that we don't notice (C<[>, C<->, C<{>). So another way to do it
 would be:
 
-    $ ack -Q $.browser
+    $ ack -Q '$.browser'
 
-This switch makes Ack escape all necessary characters so that the string
-we're passing is considered a literal and not a regular expression.
+This switch makes Ack escape all necessary characters so that the
+string we're passing is considered a literal and not a regular
+expression. However, we still must quote the C<$.browser> so the
+shell doesn't interpolate when it sees the C<$>.
 
 Ack by default returns lines it matches on.  If you want to see
 context for the code in the results, you can use the C<-C> flag,
