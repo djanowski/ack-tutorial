@@ -117,5 +117,11 @@ would be:
 This switch makes Ack escape all necessary characters so that the string
 we're passing is considered a literal and not a regular expression.
 
+Ack by default returns lines it matches on.  If you want to see context
+for the code in the results, you can use the -C flag, and provide the
+number of lines of context to include from above and below the match:
+
+    $ ack -C 1 require
+
 
 To be continued...
