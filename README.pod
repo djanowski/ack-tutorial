@@ -129,5 +129,17 @@ would be:
 This switch makes Ack escape all necessary characters so that the string
 we're passing is considered a literal and not a regular expression.
 
+Ack by default returns lines it matches on.  If you want to see
+context for the code in the results, you can use the C<-C> flag,
+and provide the number of lines of context to include from above
+and below the match:
+
+    $ ack -C 1 return
+
+    ttdev.pm-37-    my $nslashes = ($str =~ tr[/][/]);
+    ttdev.pm:38:    return sprintf( "%02d%s", $nslashes, $str );
+    ttdev.pm-39-}
+
+Here, F<ack> shows the line before and after the line matching C<return>.
 
 To be continued...
