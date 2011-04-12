@@ -140,6 +140,8 @@ and below the match:
     ttdev.pm:38:    return sprintf( "%02d%s", $nslashes, $str );
     ttdev.pm-39-}
 
-Here, F<ack> shows the line before and after the line matching C<return>.
+Here, F<ack> shows the line before and after the line matching
+C<return>.  If you want rows before the match, use C<-B>.  For only
+rows after the match, use C<-A>.
 
 To be continued...
