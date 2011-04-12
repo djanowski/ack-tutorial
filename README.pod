@@ -1,34 +1,45 @@
-(THIS DOCUMENT IS OBSOLETE.  Make updates to README.pod, please.)
-
-Welcome to this short tutorial on Ack, a better `grep(1)` for
+Welcome to this short tutorial on Ack, a better C<grep(1)> for
 programmers.
 
 The goal of this tutorial is to show you Ack's power, especially for
 searching code bases.
 
-Installation
-===
+=head1 Installation
 
-* OS X / Homebrew: `brew install ack`
-* OS X / MacPorts: `sudo port install p5-app-ack`
-* Debian: `sudo apt-get install ack-grep; sudo ln -s $(which ack-grep) /usr/local/bin/ack`
-* Ubuntu: `sudo apt-get install ack-grep; sudo ln -s $(which ack-grep) /usr/local/bin/ack`
+=over
 
-First searches
-===
+=item OS X / Homebrew
+
+    brew install ack
+
+=item OS X / MacPorts
+
+    sudo port install p5-app-ack
+
+=item Debian
+
+    sudo apt-get install ack-grep; sudo ln -s $(which ack-grep) /usr/local/bin/ack
+
+=item Ubuntu
+
+    sudo apt-get install ack-grep; sudo ln -s $(which ack-grep) /usr/local/bin/ack
+
+=back
+
+=head1 First searches
 
 Say we're working on an application. For this example we'll
 use the [Redis website](http://redis.io), which is [open
 source](https://github.com/antirez/redis-io).
 
-So -- I know there's a helper method called `related_topics_for`,
+So -- I know there's a helper method called C<related_topics_for>,
 because it's throwing an exception. I'd like to see where it's defined.
 
     $ ack related_topics_for
 
 That was a short and simple result. Things to note:
 
-* Ack is ignoring everything in my `.git` directory, because it knows I
+* Ack is ignoring everything in my F<.git> directory, because it knows I
 don't care about what's in there.
 
 * Only 'known' file types are searched. We'll come back to this later.
@@ -41,7 +52,7 @@ like grep's). Usability wins.
 Okay. I found where the method is defined, and I'm thinking the issue
 may be related to some library I'm using. I'd like to see everything
 that my code is loading. In Ruby, this means searching for the keyword
-`require`.
+C<require>.
 
     $ ack require
 
@@ -51,14 +62,14 @@ use a pager:
 
     $ echo '--pager=less' > ~/.ackrc
 
-If you're using `less(1)`, you'll need to tell it to allow color to be
+If you're using I<less(1)>, you'll need to tell it to allow color to be
 displayed. In short, if you're using Bash:
 
     $ echo export LESS=-RFX >> ~/.bashrc
     $ source ~/.bashrc
 
-Check out `man less` to know exactly what `-R`, `-F` and `-X` do, but
-believe me it's a good general configuration for `less`.
+Check out C<man less> to know exactly what C<-R>, C<-F> and C<-X> do, but
+believe me it's a good general configuration for I<less>.
 
 Try our previous search again:
 
@@ -80,8 +91,7 @@ it:
 
     $ ack -w require
 
-More switches
-===
+=head1 More switches
 
 Now that we have more or less what we were looking for, it's a common
 need to open those files. For this use case, there's a very handy switch
@@ -99,11 +109,11 @@ Hopefully we fixed the bug.
 
 Now, say we would like to check if we're doing any browser sniffing (we
 all know it's bad, so we'd like to see if we can remove that). In jQuery
-it's common to do these checks using the object `$.browser`.
+it's common to do these checks using the object C<$.browser>.
 
     $ ack $.browser
 
-That will return no results, because in regular expressions `$` is the
+That will return no results, because in regular expressions C<$> is the
 end of the line -- so we're actually searching for things after the EOL,
 which doesn't make sense. One solution would be to escape (to Ack, not
 the shell) those characters:
@@ -111,7 +121,7 @@ the shell) those characters:
     $ ack '\$\.browser'
 
 But that's quite a bit of thought, and we may have some other control
-characters that we don't notice (`[`, `-`, `{`). So another way to do it
+characters that we don't notice (C<[>, C<->, C<{>). So another way to do it
 would be:
 
     $ ack -Q $.browser
