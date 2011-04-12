@@ -29,8 +29,8 @@ searching code bases.
 =head1 First searches
 
 Say we're working on an application. For this example we'll
-use the [Redis website](http://redis.io), which is [open
-source](https://github.com/antirez/redis-io).
+use the Redis website (L<http://redis.io>), which is open
+source and available at (L<https://github.com/antirez/redis-io>).
 
 So -- I know there's a helper method called C<related_topics_for>,
 because it's throwing an exception. I'd like to see where it's defined.
