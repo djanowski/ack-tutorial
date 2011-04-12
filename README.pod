@@ -39,15 +39,19 @@ because it's throwing an exception. I'd like to see where it's defined.
 
 That was a short and simple result. Things to note:
 
-* Ack is ignoring everything in my F<.git> directory, because it knows I
+=over
+
+=item * Ack is ignoring everything in my F<.git> directory, because it knows I
 don't care about what's in there.
 
-* Only 'known' file types are searched. We'll come back to this later.
+=item * Only 'known' file types are searched. We'll come back to this later.
 
-* Ack uses colored output by default. It will highlight the file name,
+=item * Ack uses colored output by default. It will highlight the file name,
 the line matched and the match itself (this is as long as I'm not piping
 its output to another program -- in that case, Ack's output looks a lot
 like grep's). Usability wins.
+
+=back
 
 Okay. I found where the method is defined, and I'm thinking the issue
 may be related to some library I'm using. I'd like to see everything
