@@ -10,7 +10,7 @@ searching code bases.
 
 =item Unix (with perl installed)
 
-    sudo cpan App:Ack
+    sudo cpan App::Ack
 
 =item OS X / Homebrew
 
