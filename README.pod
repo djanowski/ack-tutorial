@@ -8,6 +8,10 @@ searching code bases.
 
 =over
 
+=item Unix (with perl installed)
+
+    sudo cpan App::Ack
+
 =item OS X / Homebrew
 
     brew install ack
@@ -16,11 +20,7 @@ searching code bases.
 
     sudo port install p5-app-ack
 
-=item Debian
-
-    sudo apt-get install ack-grep; sudo ln -s $(which ack-grep) /usr/local/bin/ack
-
-=item Ubuntu
+=item Debian/Ubuntu
 
     sudo apt-get install ack-grep; sudo ln -s $(which ack-grep) /usr/local/bin/ack
 
